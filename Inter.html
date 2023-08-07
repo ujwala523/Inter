@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .box {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .box:nth-child(1) {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+  }
+
+  .box:nth-child(2) {
+    background-color: green;
+    width: 150px;
+    height: 150px;
+  }
+
+  .box:nth-child(3) {
+    background-color: blue;
+    width: 200px;
+    height: 200px;
+  }
+
+  .details {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid black;
+  }
+</style>
+<title>Colored Boxes</title>
+</head>
+<body>
+  <div class="box" id="box1"></div>
+  <div class="box" id="box2"></div>
+  <div class="box" id="box3"></div>
+
+  <div class="details" id="boxDetails">
+    <h3>Box Details</h3>
+    <p><strong>Color:</strong> <span id="detailColor"></span></p>
+    <p><strong>Size:</strong> <span id="detailSize"></span></p>
+  </div>
+
+  <script>
+    const boxes = document.querySelectorAll('.box');
+    const detailColor = document.getElementById('detailColor');
+    const detailSize = document.getElementById('detailSize');
+    const boxDetails = document.getElementById('boxDetails');
+
+    boxes.forEach((box, index) => {
+      box.addEventListener('click', () => {
+        const colors = ['red', 'green', 'blue'];
+        const sizes = ['100x100', '150x150', '200x200'];
+
+        detailColor.textContent = colors[index];
+        detailSize.textContent = sizes[index];
+
+        if (boxDetails.style.display === 'none') {
+          boxDetails.style.display = 'block';
+        } else {
+          boxDetails.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
